@@ -1,0 +1,181 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BACKGROUND */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  color: white;
+}
+
+/* MAIN WRAPPER */
+.container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  text-align: center;
+}
+
+/* TITLE */
+.container h1 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* INPUT BOX WRAPPER */
+.input-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+/* INPUT */
+.input-box input {
+  padding: 14px;
+  width: 70%;
+  max-width: 400px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.input-box input:focus {
+  transform: scale(1.02);
+}
+
+/* ADD BUTTON */
+.input-box button {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: #ffd369;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.input-box button:hover {
+  background: #ffb703;
+  transform: scale(1.08);
+}
+
+/* TODO CARD (GLASS EFFECT) */
+.todo-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  text-align: left;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: 0.3s;
+}
+
+.todo-card:hover {
+  transform: translateY(-6px);
+}
+
+/* TASK TEXT */
+.todo-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* BUTTON GROUP */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* EDIT BUTTON */
+.btn-group button:first-child {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #4dabf7;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-group button:first-child:hover {
+  background: #1c7ed6;
+  transform: scale(1.05);
+}
+
+/* DELETE BUTTON */
+.btn-group button:last-child {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #ff4d4d;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-group button:last-child:hover {
+  background: #e60000;
+  transform: scale(1.05);
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  animation: slideIn 0.4s ease;
+}
+
+/* ANIMATION */
+@keyframes slideIn {
+  from {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 500px) {
+  .input-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-box input {
+    width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+}

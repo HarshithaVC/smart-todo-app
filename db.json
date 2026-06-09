@@ -1,0 +1,13 @@
+{
+  "todos": [
+    {
+      "text": "meditate",
+      "id": "H4h1AM7CLW4"
+    },
+    {
+      "text": "study",
+      "id": "VWIHpAHVydI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
