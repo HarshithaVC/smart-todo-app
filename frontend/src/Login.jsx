@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import "./styles.css";
+
+const BASE_URL = "https://smart-todo-app-0nap.onrender.com";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,25 +10,25 @@ function Login() {
   const navigate = useNavigate();
 
   async function handleLogin() {
-    if (!email || !password) return;
+    if (!email || !password) {
+      alert("Enter all fields");
+      return;
+    }
 
     try {
-      const res = await axios.post(
-        "https://smart-todo-app-0nap.onrender.com/api/auth/login",
-        {
-          email,
-          password,
-        }
-      );
+      const res = await axios.post(`${BASE_URL}/api/auth/login`, {
+        email,
+        password,
+      });
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user.email);
 
-      navigate("/about"); // as you wanted
+      navigate("/about");
 
     } catch (err) {
-      alert("Invalid login");
       console.error(err.response?.data || err.message);
+      alert("Invalid login ❌");
     }
   }
 
@@ -38,14 +39,12 @@ function Login() {
       <input
         type="email"
         placeholder="Enter email"
-        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
       <input
         type="password"
         placeholder="Enter password"
-        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 

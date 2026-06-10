@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = "https://smart-todo-app-0nap.onrender.com";
+
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,13 +16,10 @@ function Signup() {
     }
 
     try {
-      await axios.post(
-        "https://smart-todo-app-0nap.onrender.com/api/auth/signup",
-        {
-          email,
-          password,
-        }
-      );
+      await axios.post(`${BASE_URL}/api/auth/signup`, {
+        email,
+        password,
+      });
 
       alert("Signup successful ✅");
       navigate("/login");

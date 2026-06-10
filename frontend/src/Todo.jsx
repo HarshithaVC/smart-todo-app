@@ -2,26 +2,26 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Todo.css";
 
+const BASE_URL = "https://smart-todo-app-0nap.onrender.com";
+
 function Todo() {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
   const [popup, setPopup] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const API = "https://smart-todo-app-0nap.onrender.com/api/todos";
-
   const token = localStorage.getItem("token");
 
   async function getTodos() {
     try {
-      const res = await axios.get(API, {
+      const res = await axios.get(`${BASE_URL}/api/todos`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setTodos(res.data);
     } catch (err) {
-      console.error("GET ERROR:", err.response?.data || err.message);
+      console.error(err.response?.data || err.message);
     }
   }
 
@@ -35,7 +35,7 @@ function Todo() {
     try {
       if (editId) {
         await axios.put(
-          `${API}/${editId}`,
+          `${BASE_URL}/api/todos/${editId}`,
           { text },
           {
             headers: {
@@ -46,7 +46,7 @@ function Todo() {
         setEditId(null);
       } else {
         await axios.post(
-          API,
+          `${BASE_URL}/api/todos`,
           { text },
           {
             headers: {
@@ -58,14 +58,15 @@ function Todo() {
 
       setText("");
       getTodos();
+
     } catch (err) {
-      console.error("SUBMIT ERROR:", err.response?.data || err.message);
+      console.error(err.response?.data || err.message);
     }
   }
 
   async function deleteTodo(id) {
     try {
-      await axios.delete(`${API}/${id}`, {
+      await axios.delete(`${BASE_URL}/api/todos/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -73,9 +74,10 @@ function Todo() {
 
       setPopup(true);
       setTimeout(() => setPopup(false), 2000);
+
       getTodos();
     } catch (err) {
-      console.error("DELETE ERROR:", err);
+      console.error(err);
     }
   }
 
