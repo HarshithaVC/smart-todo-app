@@ -21,17 +21,17 @@ function Login() {
         password,
       });
 
+      console.log("LOGIN SUCCESS:", res.data);
+
       // ✅ Save token
       localStorage.setItem("token", res.data.token);
 
-      console.log("TOKEN:", res.data.token);
-
-      // ✅ Redirect to TODO (MAIN PAGE)
-      navigate("/todo");
+      // ✅ FORCE redirect (stronger than navigate)
+      window.location.href = "/todo";
 
     } catch (err) {
-      console.error(err.response?.data || err.message);
-      alert("Invalid login ❌");
+      console.error("LOGIN ERROR:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Login failed ❌");
     }
   }
 
