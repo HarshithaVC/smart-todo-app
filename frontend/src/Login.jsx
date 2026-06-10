@@ -13,23 +13,17 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://smart-todo-app-0nap.onrender.com/api/auth/login",
         {
           email,
           password,
         }
       );
 
-      console.log("LOGIN RESPONSE:", res.data);
-
-      // ✅ STORE TOKEN
       localStorage.setItem("token", res.data.token);
-
-      // ✅ STORE USER EMAIL (FIXED)
       localStorage.setItem("user", res.data.user.email);
 
-      // ✅ REDIRECT TO ABOUT PAGE (as you wanted)
-      navigate("/about");
+      navigate("/about"); // as you wanted
 
     } catch (err) {
       alert("Invalid login");
@@ -38,8 +32,8 @@ function Login() {
   }
 
   return (
-    <div className="page">
-      <h2>Login</h2>
+    <div>
+      <h1>Login</h1>
 
       <input
         type="email"

@@ -8,11 +8,10 @@ function Todo() {
   const [popup, setPopup] = useState(false);
   const [editId, setEditId] = useState(null);
 
-  const API = "http://localhost:5000/api/todos";
+  const API = "https://smart-todo-app-0nap.onrender.com/api/todos";
 
   const token = localStorage.getItem("token");
 
-  // ================= GET TODOS =================
   async function getTodos() {
     try {
       const res = await axios.get(API, {
@@ -20,7 +19,6 @@ function Todo() {
           Authorization: `Bearer ${token}`,
         },
       });
-
       setTodos(res.data);
     } catch (err) {
       console.error("GET ERROR:", err.response?.data || err.message);
@@ -31,7 +29,6 @@ function Todo() {
     getTodos();
   }, []);
 
-  // ================= ADD / UPDATE =================
   async function handleSubmit() {
     if (!text.trim()) return;
 
@@ -46,7 +43,6 @@ function Todo() {
             },
           }
         );
-
         setEditId(null);
       } else {
         await axios.post(
@@ -67,7 +63,6 @@ function Todo() {
     }
   }
 
-  // ================= DELETE =================
   async function deleteTodo(id) {
     try {
       await axios.delete(`${API}/${id}`, {
@@ -78,24 +73,21 @@ function Todo() {
 
       setPopup(true);
       setTimeout(() => setPopup(false), 2000);
-
       getTodos();
     } catch (err) {
       console.error("DELETE ERROR:", err);
     }
   }
 
-  // ================= EDIT =================
   function startEdit(todo) {
     setText(todo.text);
     setEditId(todo._id);
   }
 
   return (
-    <div className="container">
+    <div>
       <h1>Todo List</h1>
 
-      {/* INPUT */}
       <div className="input-box">
         <input
           type="text"
@@ -109,10 +101,8 @@ function Todo() {
         </button>
       </div>
 
-      {/* POPUP */}
       {popup && <div className="popup">Deleted ✅</div>}
 
-      {/* LIST */}
       {todos.map((todo) => (
         <div key={todo._id} className="todo-card">
           <h3>{todo.text}</h3>

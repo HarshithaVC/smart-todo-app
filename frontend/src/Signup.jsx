@@ -9,23 +9,26 @@ function Signup() {
 
   async function handleSignup() {
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", {
-        email,
-        password,
-      });
+      await axios.post(
+        "https://smart-todo-app-0nap.onrender.com/api/auth/signup",
+        {
+          email,
+          password,
+        }
+      );
 
-      alert("Signup successful");
+      alert("Signup successful ✅");
       navigate("/login");
 
     } catch (err) {
-      alert("Signup failed");
-      console.error(err);
+      alert("Signup failed ❌");
+      console.error(err.response?.data || err.message);
     }
   }
 
   return (
-    <div className="page">
-      <h2>Signup</h2>
+    <div>
+      <h1>Signup</h1>
 
       <input
         type="email"
