@@ -21,10 +21,13 @@ function Login() {
         password,
       });
 
+      // ✅ Save token
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", res.data.user.email);
 
-      navigate("/about");
+      console.log("TOKEN:", res.data.token);
+
+      // ✅ Redirect to TODO (MAIN PAGE)
+      navigate("/todo");
 
     } catch (err) {
       console.error(err.response?.data || err.message);

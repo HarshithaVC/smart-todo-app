@@ -14,14 +14,14 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* 🏠 HOME (FIRST PAGE) */}
+        {/* 🏠 HOME */}
         <Route path="/" element={<Home />} />
 
         {/* 🔐 AUTH */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* 🔐 AFTER LOGIN (WITH NAVBAR) */}
+        {/* 🔐 PROTECTED ROUTES */}
         <Route
           element={
             <ProtectedRoute>

@@ -1,12 +1,17 @@
-import Navbar from "./Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 function Layout() {
   return (
-    <>
-      <Navbar />
+    <div>
+      {/* NAVBAR */}
+      <nav>
+        <Link to="/about">About</Link> | 
+        <Link to="/todo">Todo</Link>
+      </nav>
+
+      {/* PAGE CONTENT */}
       <Outlet />
-    </>
+    </div>
   );
 }
 
