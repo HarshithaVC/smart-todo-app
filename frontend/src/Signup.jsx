@@ -8,6 +8,11 @@ function Signup() {
   const navigate = useNavigate();
 
   async function handleSignup() {
+    if (!email || !password) {
+      alert("Enter all fields");
+      return;
+    }
+
     try {
       await axios.post(
         "https://smart-todo-app-0nap.onrender.com/api/auth/signup",
@@ -21,8 +26,8 @@ function Signup() {
       navigate("/login");
 
     } catch (err) {
-      alert("Signup failed ❌");
       console.error(err.response?.data || err.message);
+      alert(err.response?.data?.message || "Signup failed ❌");
     }
   }
 
