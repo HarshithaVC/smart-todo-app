@@ -6,10 +6,8 @@ function Home() {
       <h1>Smart Todo App</h1>
       <p>Plan your day and stay productive!</p>
 
-      <div>
-        <Link to="/login"><button>Login</button></Link>
-        <Link to="/signup"><button>Sign Up</button></Link>
-      </div>
+      <Link to="/login"><button>Login</button></Link>
+      <Link to="/signup"><button>Sign Up</button></Link>
     </div>
   );
 }

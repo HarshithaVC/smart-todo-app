@@ -21,16 +21,15 @@ function Login() {
         password,
       });
 
-      console.log("LOGIN SUCCESS:", res.data);
-
-      // ✅ Save token
-      localStorage.setItem("token", res.data.token);
-
-      // ✅ FIXED navigation
-      navigate("/todo");
+      // ✅ Save token safely
+      if (res.data?.token) {
+        localStorage.setItem("token", res.data.token);
+        navigate("/todo"); // ✅ Correct navigation
+      } else {
+        alert("No token received ❌");
+      }
 
     } catch (err) {
-      console.error(err.response?.data || err.message);
       alert(err.response?.data?.message || "Login failed ❌");
     }
   }

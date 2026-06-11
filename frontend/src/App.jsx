@@ -13,14 +13,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* 🏠 HOME */}
-        <Route path="/" element={<Home />} />
 
-        {/* 🔐 AUTH */}
+        {/* PUBLIC */}
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* 🔐 PROTECTED */}
+        {/* PROTECTED */}
         <Route
           element={
             <ProtectedRoute>
@@ -31,6 +30,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/todo" element={<Todo />} />
         </Route>
+
       </Routes>
     </BrowserRouter>
   );

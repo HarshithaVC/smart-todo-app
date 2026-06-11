@@ -8,11 +8,6 @@ function About() {
       <h3>Features</h3>
       <p>✔ Add, edit, delete tasks</p>
       <p>✔ Secure login system</p>
-
-      <h3>Why this app?</h3>
-      <p>
-        This app helps you organize your daily life and boost productivity.
-      </p>
     </div>
   );
 }
