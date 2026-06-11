@@ -32,7 +32,7 @@ function Signup() {
 
   return (
     <div>
-      <h1>Signup</h1>
+      <h2>Signup</h2>
 
       <input
         type="email"
@@ -40,11 +40,15 @@ function Signup() {
         onChange={(e) => setEmail(e.target.value)}
       />
 
+      <br />
+
       <input
         type="password"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
+
+      <br />
 
       <button onClick={handleSignup}>Signup</button>
     </div>

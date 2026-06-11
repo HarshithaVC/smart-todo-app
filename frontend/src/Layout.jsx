@@ -5,7 +5,7 @@ function Layout() {
     <div>
       {/* NAVBAR */}
       <nav>
-        <Link to="/about">About</Link> | 
+        <Link to="/about">About</Link> |{" "}
         <Link to="/todo">Todo</Link>
       </nav>
 

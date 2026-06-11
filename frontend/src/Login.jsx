@@ -26,18 +26,18 @@ function Login() {
       // ✅ Save token
       localStorage.setItem("token", res.data.token);
 
-      // ✅ FORCE redirect (stronger than navigate)
-      window.location.href = "/todo";
+      // ✅ FIXED navigation
+      navigate("/todo");
 
     } catch (err) {
-      console.error("LOGIN ERROR:", err.response?.data || err.message);
+      console.error(err.response?.data || err.message);
       alert(err.response?.data?.message || "Login failed ❌");
     }
   }
 
   return (
     <div>
-      <h1>Login</h1>
+      <h2>Login</h2>
 
       <input
         type="email"
@@ -45,11 +45,15 @@ function Login() {
         onChange={(e) => setEmail(e.target.value)}
       />
 
+      <br />
+
       <input
         type="password"
         placeholder="Enter password"
         onChange={(e) => setPassword(e.target.value)}
       />
+
+      <br />
 
       <button onClick={handleLogin}>Login</button>
 
